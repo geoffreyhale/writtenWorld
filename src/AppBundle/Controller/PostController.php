@@ -13,7 +13,7 @@ class PostController extends Controller
      */
     public function showAction($slug)
     {
-        return $this->render('post.html.twig', array(
+        return $this->render('post/show.html.twig', array(
             'post_title' => 'This is the PostController showAction page for $slug = "' . $slug . '".',
             'post_body' => 'This is a post body for $slug = "' . $slug . '".',
             'post_id' => $slug
