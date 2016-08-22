@@ -10,14 +10,25 @@ use Symfony\Component\HttpFoundation\Response;
 class StoryController extends Controller
 {
     /**
-     * @Route("/story/{slug}", name="story_show")
+     * @Route("/story/{storyId}", name="story_show")
      */
-    public function showAction($slug)
+    public function showAction($storyId)
     {
+        /** @var Story $story */
+        $story = $this->getDoctrine()
+            ->getRepository('AppBundle:Story')
+            ->find($storyId);
+
+        if (!$story) {
+            throw $this->createNotFoundException(
+                'No story found for id ' . $storyId
+            );
+        }
+
         return $this->render('story/show.html.twig', array(
-            'title' => 'Title for Story #' . $slug,
-            'body' => 'Body for Story #' . $slug,
-            'id' => $slug
+            'title' => $story->getTitle(),
+            'body' => $story->getBody(),
+            'id' => $story->getId()
         ));
     }
 
