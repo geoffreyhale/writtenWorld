@@ -3,12 +3,25 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Written World{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <style>
+                #header ul {
+                    list-style: none;
+                }
+                #header ul li {
+                    display: inline-block;
+                    margin-right: 20px;
+                }
+            </style>
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         <div id="header">
-            <a href="{{ path('homepage') }}">Written World</a>
+            <ul>
+                <li><a href="{{ path('homepage') }}">Written World</a></li>
+                <li><a href="{{ path('stories_list') }}">Stories List</a></li>
+            </ul>
         </div>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}

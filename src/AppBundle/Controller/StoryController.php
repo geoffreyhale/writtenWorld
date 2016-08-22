@@ -33,7 +33,7 @@ class StoryController extends Controller
     }
 
     /**
-     * @Route("/stories", name="show_stories")
+     * @Route("/stories", name="stories_list")
      */
     public function listAction()
     {
