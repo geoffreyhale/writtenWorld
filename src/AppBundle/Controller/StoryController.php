@@ -33,6 +33,26 @@ class StoryController extends Controller
     }
 
     /**
+     * @Route("/stories", name="show_stories")
+     */
+    public function listAction()
+    {
+        $stories = $this->getDoctrine()
+            ->getRepository('AppBundle:Story')
+            ->findAll();
+
+        if (!$stories) {
+            throw $this->createNotFoundException(
+                'No stories found'
+            );
+        }
+
+        return $this->render('story/list.html.twig', array(
+            'stories' => $stories
+        ));
+    }
+
+    /**
      * @Route("/story/create/{title}/{body}", name="story_create")
      */
     public function createAction($title, $body)

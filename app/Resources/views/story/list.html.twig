@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Stories - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <ul>
+                {% for story in stories %}
+                <li><a href="{{ path('story_show', { storyId : story.id }) }}">{{ story.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
