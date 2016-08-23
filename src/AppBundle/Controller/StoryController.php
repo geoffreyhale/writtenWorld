@@ -10,6 +10,26 @@ use Symfony\Component\HttpFoundation\Response;
 class StoryController extends Controller
 {
     /**
+     * @Route("/", name="story_list")
+     */
+    public function listAction()
+    {
+        $stories = $this->getDoctrine()
+            ->getRepository('AppBundle:Story')
+            ->findAll();
+
+        if (!$stories) {
+            throw $this->createNotFoundException(
+                'No stories found'
+            );
+        }
+
+        return $this->render('story/list.html.twig', array(
+            'stories' => $stories
+        ));
+    }
+
+    /**
      * @Route("/story/{storyId}", name="story_show")
      */
     public function showAction($storyId)
@@ -29,26 +49,6 @@ class StoryController extends Controller
             'title' => $story->getTitle(),
             'body' => $story->getBody(),
             'id' => $story->getId()
-        ));
-    }
-
-    /**
-     * @Route("/stories", name="stories_list")
-     */
-    public function listAction()
-    {
-        $stories = $this->getDoctrine()
-            ->getRepository('AppBundle:Story')
-            ->findAll();
-
-        if (!$stories) {
-            throw $this->createNotFoundException(
-                'No stories found'
-            );
-        }
-
-        return $this->render('story/list.html.twig', array(
-            'stories' => $stories
         ));
     }
 
