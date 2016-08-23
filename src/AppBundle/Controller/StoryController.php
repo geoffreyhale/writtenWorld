@@ -45,10 +45,22 @@ class StoryController extends Controller
             );
         }
 
+        //@todo ReactJS would be better for a modular approach like this
+        $stories = $this->getDoctrine()
+            ->getRepository('AppBundle:Story')
+            ->findAll();
+
+        if (!$stories) {
+            throw $this->createNotFoundException(
+                'No stories found'
+            );
+        }
+
         return $this->render('story/show.html.twig', array(
             'title' => $story->getTitle(),
             'body' => $story->getBody(),
-            'id' => $story->getId()
+            'id' => $story->getId(),
+            'stories' => $stories
         ));
     }
 

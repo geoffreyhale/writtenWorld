@@ -3,8 +3,14 @@
 {% block title %}Story #{{ id }} - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <h2 class="page-header">{{ title }}</h2>
-    <div id="post">
-        {{ body }}
+    <div class="col-md-8">
+        <h2 class="page-header">{{ title }}</h2>
+        <div id="post">
+            {{ body }}
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h3>Stories</h3>
+        {{ include('story/partials/list.html.twig') }}
     </div>
 {% endblock %}
