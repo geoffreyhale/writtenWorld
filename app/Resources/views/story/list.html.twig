@@ -3,13 +3,9 @@
 {% block title %}Stories - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <ul class="list-group">
-                {% for story in stories %}
-                <li class="list-group-item"><a href="{{ path('story_show', { storyId : story.id }) }}">{{ story.title }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
+    <ul class="list-group">
+        {% for story in stories %}
+            <li class="list-group-item"><a href="{{ path('story_show', { storyId : story.id }) }}">{{ story.title }}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}

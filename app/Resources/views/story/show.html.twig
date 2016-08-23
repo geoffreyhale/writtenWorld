@@ -3,12 +3,8 @@
 {% block title %}Story #{{ id }} - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="post">
-                <h1>{{ title }}</h1>
-                <div>{{ body }}</div>
-            </div>
-        </div>
+    <div id="post">
+        <h1>{{ title }}</h1>
+        <div>{{ body }}</div>
     </div>
 {% endblock %}
