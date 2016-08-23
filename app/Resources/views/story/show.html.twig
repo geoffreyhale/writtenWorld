@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
     <style>
-        .img {
+        img {
             margin: 0 10px 10px 0;
         }
         #characters {
@@ -12,6 +12,11 @@
         }
         .character {
             margin: 20px 0;
+        }
+        .character img {
+            float: left;
+            width: 100px;
+            height: 100px;
         }
     </style>
 {% endblock %}
@@ -31,28 +36,28 @@
     </div>
     <div class="col-md-4">
         <div id="location">
-            <div class="img" style="width: 100%; height: 240px; background-color: lightgrey;">
-                {#<img src="#" class="img-thumbnail">#}
-            </div>
+            {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
+            <img src="{{ asset_url }}" class="img-rounded" style="width: 100%;" />
+            {% endimage %}
             <p>The <strong>splendid castle</strong> had massive doors.  It was the castle of a king.  It had a bedroom, a pea and many mattresses.</p>
         </div>
         <div id="characters">
             <div class="character">
-                <div class="img" style="float: left; width: 100px; height: 100px; background-color: lightgrey;">
-                    {#<img src="#" class="img-thumbnail">#}
-                </div>
+                {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
+                <img src="{{ asset_url }}" class="img-rounded" />
+                {% endimage %}
                 <p style="display: inline;">The <strong>beautiful young girl</strong> became lost while traveling.  She claimed to be a princess.  She's very sensitive.  She didn't sleep well because of a pea under her mattress.  She married <a href="#">the prince</a> and lived happily ever after.</p>
             </div>
             <div class="character">
-                <div class="img" style="float: left; width: 100px; height: 100px; background-color: lightgrey;">
-                    {#<img src="#" class="img-thumbnail">#}
-                </div>
+                {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
+                <img src="{{ asset_url }}" class="img-rounded" />
+                {% endimage %}
                 <p style="display: inline;">The <strong>king of the country</strong> sought the advice of his counselors.  He put the <a href="#">beautiful young girl</a> to a test.  She passed the test so he offered the princess <a href="#">his son</a>'s hand in marraige.</p>
             </div>
             <div class="character">
-                <div class="img" style="float: left; width: 100px; height: 100px; background-color: lightgrey;">
-                    {#<img src="#" class="img-thumbnail">#}
-                </div>
+                {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
+                <img src="{{ asset_url }}" class="img-rounded" />
+                {% endimage %}
                 <p style="display: inline;">Not much is known about <strong>the prince</strong>.  <a href="#">His father</a> was king of the country.  He married a <a href="#">beautiful young girl</a> and lived happily every after.</p>
             </div>
         </div>
