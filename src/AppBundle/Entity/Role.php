@@ -35,6 +35,11 @@ class Role
      */
     private $description;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Story", mappedBy="roles")
+     */
+    private $stories;
+
 
     /**
      * Get id
@@ -93,5 +98,45 @@ class Role
     {
         return $this->description;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->stories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add story
+     *
+     * @param \AppBundle\Entity\Story $story
+     *
+     * @return Role
+     */
+    public function addStory(\AppBundle\Entity\Story $story)
+    {
+        $this->stories[] = $story;
+
+        return $this;
+    }
+
+    /**
+     * Remove story
+     *
+     * @param \AppBundle\Entity\Story $story
+     */
+    public function removeStory(\AppBundle\Entity\Story $story)
+    {
+        $this->stories->removeElement($story);
+    }
+
+    /**
+     * Get stories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStories()
+    {
+        return $this->stories;
+    }
+}

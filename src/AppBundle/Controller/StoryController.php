@@ -52,25 +52,13 @@ class StoryController extends Controller
             ->getRepository('AppBundle:Story')
             ->findAll();
 
-        //@todo show only related Location(s)
-        /** @var Story $story */
-        $locations = $this->getDoctrine()
-            ->getRepository('AppBundle:Location')
-            ->findAll();
-
-        //@todo show only related Roles
-        /** @var Story $story */
-        $roles = $this->getDoctrine()
-            ->getRepository('AppBundle:Role')
-            ->findAll();
-
         return $this->render('story/show.html.twig', array(
             'title' => $story->getTitle(),
             'body' => $story->getBody(),
             'id' => $story->getId(),
             'stories' => $stories,
-            'locations' => $locations,
-            'roles' => $roles
+            'locations' => $story->getLocations(),
+            'roles' => $story->getRoles()
         ));
     }
 

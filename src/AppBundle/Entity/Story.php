@@ -28,6 +28,24 @@ class Story
     private $body;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Location", inversedBy="stories")
+     * @ORM\JoinTable(name="story_locations",
+     *      joinColumns={@ORM\JoinColumn(name="story_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="location_id", referencedColumnName="id")}
+     *      )
+     */
+    private $locations;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Role", inversedBy="stories")
+     * @ORM\JoinTable(name="story_roles",
+     *      joinColumns={@ORM\JoinColumn(name="story_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
+     *      )
+     */
+    private $roles;
+
+    /**
      * Get id
      *
      * @return \integer
@@ -83,5 +101,81 @@ class Story
     public function getBody()
     {
         return $this->body;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->locations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add location
+     *
+     * @param \AppBundle\Entity\Location $location
+     *
+     * @return Story
+     */
+    public function addLocation(\AppBundle\Entity\Location $location)
+    {
+        $this->locations[] = $location;
+
+        return $this;
+    }
+
+    /**
+     * Remove location
+     *
+     * @param \AppBundle\Entity\Location $location
+     */
+    public function removeLocation(\AppBundle\Entity\Location $location)
+    {
+        $this->locations->removeElement($location);
+    }
+
+    /**
+     * Get locations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLocations()
+    {
+        return $this->locations;
+    }
+
+    /**
+     * Add role
+     *
+     * @param \AppBundle\Entity\Role $role
+     *
+     * @return Story
+     */
+    public function addRole(\AppBundle\Entity\Role $role)
+    {
+        $this->roles[] = $role;
+
+        return $this;
+    }
+
+    /**
+     * Remove role
+     *
+     * @param \AppBundle\Entity\Role $role
+     */
+    public function removeRole(\AppBundle\Entity\Role $role)
+    {
+        $this->roles->removeElement($role);
+    }
+
+    /**
+     * Get roles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRoles()
+    {
+        return $this->roles;
     }
 }
