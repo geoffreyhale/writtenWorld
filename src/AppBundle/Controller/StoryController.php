@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Location;
+use AppBundle\Entity\Role;
 use AppBundle\Entity\Story;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -45,22 +47,30 @@ class StoryController extends Controller
             );
         }
 
-        //@todo ReactJS would be better for a modular approach like this
+        //@todo show related Stories
         $stories = $this->getDoctrine()
             ->getRepository('AppBundle:Story')
             ->findAll();
 
-        if (!$stories) {
-            throw $this->createNotFoundException(
-                'No stories found'
-            );
-        }
+        //@todo show only related Location(s)
+        /** @var Story $story */
+        $locations = $this->getDoctrine()
+            ->getRepository('AppBundle:Location')
+            ->findAll();
+
+        //@todo show only related Roles
+        /** @var Story $story */
+        $roles = $this->getDoctrine()
+            ->getRepository('AppBundle:Role')
+            ->findAll();
 
         return $this->render('story/show.html.twig', array(
             'title' => $story->getTitle(),
             'body' => $story->getBody(),
             'id' => $story->getId(),
-            'stories' => $stories
+            'stories' => $stories,
+            'locations' => $locations,
+            'roles' => $roles
         ));
     }
 
