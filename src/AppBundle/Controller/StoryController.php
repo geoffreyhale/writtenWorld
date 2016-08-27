@@ -67,11 +67,25 @@ class StoryController extends Controller
     }
 
     /**
-     * @Route("/story/edit/", name="story_edit")
+     * @Route("/story/create/", name="story_create")
+     * @Route("/story/edit/{storyId}", name="story_edit")
      */
-    public function editAction(Request $request)
+    public function editAction($storyId = null, Request $request)
     {
         $story = new Story();
+
+        if ($storyId) {
+            /** @var Story $story */
+            $story = $this->getDoctrine()
+                ->getRepository('AppBundle:Story')
+                ->find($storyId);
+
+            if (!$story) {
+                throw $this->createNotFoundException(
+                    'No story found for id ' . $storyId
+                );
+            }
+        }
 
         $form = $this->createFormBuilder($story)
             ->add('title', TextType::class)
@@ -87,6 +101,10 @@ class StoryController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($story);
             $em->flush();
+
+            return $this->redirectToRoute('story_edit', array (
+                'storyId' => $story->getId()
+            ));
         }
 
         return $this->render('story/edit.html.twig', array(
