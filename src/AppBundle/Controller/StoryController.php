@@ -7,7 +7,11 @@ use AppBundle\Entity\Role;
 use AppBundle\Entity\Story;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class StoryController extends Controller
 {
@@ -63,18 +67,30 @@ class StoryController extends Controller
     }
 
     /**
-     * @Route("/story/create/{title}/{body}", name="story_create")
+     * @Route("/story/edit/", name="story_edit")
      */
-    public function createAction($title, $body)
+    public function editAction(Request $request)
     {
         $story = new Story();
-        $story->setTitle($title);
-        $story->setBody($body);
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($story);
-        $em->flush();
+        $form = $this->createFormBuilder($story)
+            ->add('title', TextType::class)
+            ->add('body', TextareaType::class)
+            ->add('save', SubmitType::class, array('label' => 'Create Story'))
+            ->getForm();
 
-        return new Response('Created new story with id ' . $story->getId());
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $story = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($story);
+            $em->flush();
+        }
+
+        return $this->render('story/edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 }
