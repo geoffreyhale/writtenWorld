@@ -16,7 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class StoryController extends Controller
 {
     /**
-     * @Route("/", name="story_list")
+     * @Route("/stories", name="story_list")
      */
     public function listAction()
     {

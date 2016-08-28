@@ -8,5 +8,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-
+    /**
+     * @Route("/", name="home")
+     */
+    public function homeAction()
+    {
+        return $this->redirectToRoute('story_list');
+    }
 }
