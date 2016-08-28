@@ -64,7 +64,7 @@
                         <img src="{{ asset_url }}" class="img-rounded" />
                     {% endimage %}
                     <h3>
-                        {{ location.name }}
+                        <a href="{{ path('location_show', {locationId: location.id }) }}" style="color: inherit;">{{ location.name }}</a>
                         <span class="small">
                             <a href="{{ path('location_edit', {locationId: location.id }) }}">edit</a>
                         </span>
