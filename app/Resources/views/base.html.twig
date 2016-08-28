@@ -30,7 +30,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ path('story_list') }}">Stories</a></li>
+                <li><a href="{{ path('story_list') }}">Read Stories</a></li>
+                <li><a href="{{ path('story_create') }}">Write Story</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if app.user %}
