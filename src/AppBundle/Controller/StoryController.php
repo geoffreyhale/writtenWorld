@@ -51,10 +51,7 @@ class StoryController extends Controller
             );
         }
 
-        //@todo show related Stories
-        $stories = $this->getDoctrine()
-            ->getRepository('AppBundle:Story')
-            ->findAll();
+        $stories = $story->getStories();
 
         return $this->render('story/show.html.twig', array(
             'title' => $story->getTitle(),
