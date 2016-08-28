@@ -13,6 +13,22 @@ class DefaultController extends Controller
      */
     public function homeAction()
     {
-        return $this->redirectToRoute('story_list');
+        $stories = $this->getDoctrine()
+            ->getRepository('AppBundle:Story')
+            ->findAll();
+
+        $locations = $this->getDoctrine()
+            ->getRepository('AppBundle:Location')
+            ->findAll();
+
+        $roles = $this->getDoctrine()
+            ->getRepository('AppBundle:Role')
+            ->findAll();
+
+        return $this->render('home.html.twig', array(
+            'stories' => $stories,
+            'locations' => $locations,
+            'roles' => $roles,
+        ));
     }
 }

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="col-md-4">
+        <h2 class="page-header">Stories</h2>
+        {{ include('story/partials/list.html.twig') }}
+    </div>
+    <div class="col-md-4">
+        <h2 class="page-header">Locations</h2>
+        {{ include('location/partials/list.html.twig') }}
+    </div>
+    <div class="col-md-4">
+        <h2 class="page-header">Roles</h2>
+        {{ include('role/partials/list.html.twig') }}
+    </div>
+{% endblock %}
