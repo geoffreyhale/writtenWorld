@@ -46,6 +46,15 @@ class Story
     private $roles;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Story", inversedBy="stories")
+     * @ORM\JoinTable(name="story_stories",
+     *      joinColumns={@ORM\JoinColumn(name="story_a_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="story_b_id", referencedColumnName="id")}
+     *      )
+     */
+    private $stories;
+
+    /**
      * Get id
      *
      * @return \integer
@@ -177,5 +186,39 @@ class Story
     public function getRoles()
     {
         return $this->roles;
+    }
+
+    /**
+     * Add story
+     *
+     * @param \AppBundle\Entity\Story $story
+     *
+     * @return Story
+     */
+    public function addStory(\AppBundle\Entity\Story $story)
+    {
+        $this->stories[] = $story;
+
+        return $this;
+    }
+
+    /**
+     * Remove story
+     *
+     * @param \AppBundle\Entity\Story $story
+     */
+    public function removeStory(\AppBundle\Entity\Story $story)
+    {
+        $this->stories->removeElement($story);
+    }
+
+    /**
+     * Get stories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStories()
+    {
+        return $this->stories;
     }
 }
