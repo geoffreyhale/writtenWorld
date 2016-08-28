@@ -37,7 +37,12 @@
 
 {% block body %}
     <div class="col-md-12">
-        <h2 class="page-header">{{ title }}</h2>
+        <h2 class="page-header">
+            {{ title }}
+            <span class="small">
+                <a href="{{ path('story_edit', { storyId : id }) }}">edit</a>
+            </span>
+        </h2>
     </div>
     <div class="col-md-8">
         <div class="story">
