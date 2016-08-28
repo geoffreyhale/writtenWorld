@@ -4,7 +4,12 @@
 
 {% block body %}
     <div class="col-md-8">
-        <h2 class="page-header">Roles</h2>
+        <h2 class="page-header">
+            Roles
+            <span class="small">
+                <a href="{{ path('role_create') }}">Create</a>
+            </span>
+        </h2>
         {{ include('role/partials/list.html.twig') }}
     </div>
     <div class="col-md-4">

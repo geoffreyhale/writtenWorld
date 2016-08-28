@@ -4,15 +4,30 @@
 
 {% block body %}
     <div class="col-md-4">
-        <h2 class="page-header">Stories</h2>
+        <h2 class="page-header">
+            Stories
+            <span class="small">
+                <a href="{{ path('story_create') }}">Create</a>
+            </span>
+        </h2>
         {{ include('story/partials/list.html.twig') }}
     </div>
     <div class="col-md-4">
-        <h2 class="page-header">Locations</h2>
+        <h2 class="page-header">
+            Locations
+            <span class="small">
+                <a href="{{ path('location_create') }}">Create</a>
+            </span>
+        </h2>
         {{ include('location/partials/list.html.twig') }}
     </div>
     <div class="col-md-4">
-        <h2 class="page-header">Roles</h2>
+        <h2 class="page-header">
+            Roles
+            <span class="small">
+                <a href="{{ path('role_create') }}">Create</a>
+            </span>
+        </h2>
         {{ include('role/partials/list.html.twig') }}
     </div>
 {% endblock %}
