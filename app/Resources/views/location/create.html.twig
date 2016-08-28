@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Location - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        textarea#form_body {
+            height: 400px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="col-md-12">
+        <h2 class="page-header">Create Location</h2>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

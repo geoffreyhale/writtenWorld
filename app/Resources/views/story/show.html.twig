@@ -66,7 +66,7 @@
                     <h3>
                         {{ location.name }}
                         <span class="small">
-                            <a href="#">edit</a>
+                            <a href="{{ path('location_edit', {locationId: location.id }) }}">edit</a>
                         </span>
                     </h3>
                     {{ location.description }}
