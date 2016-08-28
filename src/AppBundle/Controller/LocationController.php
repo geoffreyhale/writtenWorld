@@ -40,4 +40,24 @@ class LocationController extends Controller
             'stories' => $stories,
         ));
     }
+
+    /**
+     * @Route("/locations", name="location_list")
+     */
+    public function listAction()
+    {
+        $locations = $this->getDoctrine()
+            ->getRepository('AppBundle:Location')
+            ->findAll();
+
+        if (!$locations) {
+            throw $this->createNotFoundException(
+                'No locations found'
+            );
+        }
+
+        return $this->render('location/list.html.twig', array(
+            'locations' => $locations
+        ));
+    }
 }

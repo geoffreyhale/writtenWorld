@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Locations - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="col-md-8">
+        <h2 class="page-header">Locations</h2>
+        {{ include('location/partials/list.html.twig') }}
+    </div>
+    <div class="col-md-4">
+
+    </div>
+{% endblock %}
