@@ -116,7 +116,7 @@ class LocationController extends Controller
         $form = $this->createFormBuilder($location)
             ->add('name', TextType::class)
             ->add('description', TextareaType::class)
-            ->add('save', SubmitType::class, array('label' => 'Save'))
+            ->add('save', SubmitType::class, array('label' => 'Update'))
             ->getForm();
 
         $form->handleRequest($request);

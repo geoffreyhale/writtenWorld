@@ -121,7 +121,7 @@ class StoryController extends Controller
         $form = $this->createFormBuilder($story)
             ->add('title', TextType::class)
             ->add('body', TextareaType::class)
-            ->add('save', SubmitType::class, array('label' => 'Save'))
+            ->add('save', SubmitType::class, array('label' => 'Update'))
             ->getForm();
 
         $form->handleRequest($request);
