@@ -18,7 +18,7 @@
         }
         .location {
             clear: both;
-            margin: 20px 0;
+            margin: 0 0 20px;
         }
         .location img {
             width: 100%;
@@ -45,7 +45,7 @@
         </h2>
     </div>
     <div class="col-md-8">
-        <div class="story">
+        <div class="story clearfix">
             {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
                 <img src="{{ asset_url }}" class="img-rounded" />
             {% endimage %}
@@ -63,7 +63,12 @@
                     {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
                         <img src="{{ asset_url }}" class="img-rounded" />
                     {% endimage %}
-                    <strong>{{ location.name }}</strong><br>
+                    <h3>
+                        {{ location.name }}
+                        <span class="small">
+                            <a href="#">edit</a>
+                        </span>
+                    </h3>
                     {{ location.description }}
                 </div>
             {% endfor %}
@@ -71,10 +76,15 @@
         <div class="characters">
             {% for role in roles %}
                 <div class="character">
-                    {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
+                    {% image '@AppBundle/Resources/public/images/placeholder-role.png' %}
                         <img src="{{ asset_url }}" class="img-rounded" />
                     {% endimage %}
-                    <strong>{{ role.name }}</strong><br>
+                    <h4>
+                        {{ role.name }}
+                        <span class="small">
+                            <a href="#">edit</a>
+                        </span>
+                    </h4>
                     {{ role.description }}
                 </div>
             {% endfor %}
