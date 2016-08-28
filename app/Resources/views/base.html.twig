@@ -32,6 +32,15 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ path('story_list') }}">Stories</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if app.user %}
+                    <li><a href="#">{{ app.user.username }}</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                {% endif %}
+            </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
