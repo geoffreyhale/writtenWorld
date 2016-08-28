@@ -1,5 +1,9 @@
 <ul class="list-group">
-    {% for role in roles %}
-        <li class="list-group-item"><a href="{{ path('role_show', { roleId : role.id }) }}">{{ role.name }}</a></li>
-    {% endfor %}
+    {% if roles is empty %}
+        No results.
+    {% else %}
+        {% for role in roles %}
+            <li class="list-group-item"><a href="{{ path('role_show', { roleId : role.id }) }}">{{ role.name }}</a></li>
+        {% endfor %}
+    {% endif %}
 </ul>

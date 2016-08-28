@@ -1,5 +1,9 @@
 <ul class="list-group">
-    {% for story in stories %}
-        <li class="list-group-item"><a href="{{ path('story_show', { storyId : story.id }) }}">{{ story.title }}</a></li>
-    {% endfor %}
+    {% if stories is empty %}
+        No results.
+    {% else %}
+        {% for story in stories %}
+            <li class="list-group-item"><a href="{{ path('story_show', { storyId : story.id }) }}">{{ story.title }}</a></li>
+        {% endfor %}
+    {% endif %}
 </ul>
