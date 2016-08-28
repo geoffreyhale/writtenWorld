@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Role #{{ id }} - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        img {
+            margin: 0 10px 5px 0;
+        }
+        .main img {
+            float: left;
+            width: 300px;
+            height: 250px;
+        }
+        .stories {
+            clear: both;
+            margin-top: 60px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="col-md-12">
+        <h2 class="page-header">
+            {{ name }}
+            <span class="small">
+                <a href="{{ path('role_edit', { roleId : id }) }}">edit</a>
+            </span>
+        </h2>
+    </div>
+    <div class="col-md-8">
+        <div class="main clearfix">
+            {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
+                <img src="{{ asset_url }}" class="img-rounded" />
+            {% endimage %}
+            {{ description }}
+        </div>
+        <div class="stories">
+            <h3>Related Stories</h3>
+            {{ include('story/partials/list.html.twig') }}
+        </div>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+{% endblock %}

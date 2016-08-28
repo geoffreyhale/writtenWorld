@@ -80,9 +80,9 @@
                         <img src="{{ asset_url }}" class="img-rounded" />
                     {% endimage %}
                     <h4>
-                        {{ role.name }}
+                        <a href="{{ path('role_show', {roleId: role.id }) }}" style="color: inherit;">{{ role.name }}</a>
                         <span class="small">
-                            <a href="#">edit</a>
+                            <a href="{{ path('role_edit', {roleId: role.id }) }}">edit</a>
                         </span>
                     </h4>
                     {{ role.description }}
