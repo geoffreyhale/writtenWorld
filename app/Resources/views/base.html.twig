@@ -33,9 +33,14 @@
                 <li><a href="{{ path('story_list') }}">Stories</a></li>
                 <li><a href="{{ path('location_list') }}">Locations</a></li>
                 <li><a href="{{ path('role_list') }}">Roles</a></li>
-                <li><a href="{{ path('story_create') }}">Create Story</a></li>
-                <li><a href="{{ path('location_create') }}">Create Location</a></li>
-                <li><a href="{{ path('role_create') }}">Create Role</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('story_create') }}">Story</a></li>
+                        <li><a href="{{ path('location_create') }}">Location</a></li>
+                        <li><a href="{{ path('role_create') }}">Role</a></li>
+                    </ul>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if app.user %}
@@ -58,6 +63,9 @@
 
 </div><!-- /.container -->
 
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% endblock %}
 </body>
 </html>
