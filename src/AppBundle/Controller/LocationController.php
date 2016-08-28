@@ -83,7 +83,7 @@ class LocationController extends Controller
             $em->persist($location);
             $em->flush();
 
-            return $this->redirectToRoute('location_edit', array (
+            return $this->redirectToRoute('location_show', array (
                 'locationId' => $location->getId()
             ));
         }
@@ -128,7 +128,7 @@ class LocationController extends Controller
             $em->persist($location);
             $em->flush();
 
-            return $this->redirectToRoute('location_edit', array (
+            return $this->redirectToRoute('location_show', array (
                 'locationId' => $location->getId()
             ));
         }

@@ -88,7 +88,7 @@ class StoryController extends Controller
             $em->persist($story);
             $em->flush();
 
-            return $this->redirectToRoute('story_edit', array (
+            return $this->redirectToRoute('story_show', array (
                 'storyId' => $story->getId()
             ));
         }
@@ -133,7 +133,7 @@ class StoryController extends Controller
             $em->persist($story);
             $em->flush();
 
-            return $this->redirectToRoute('story_edit', array (
+            return $this->redirectToRoute('story_show', array (
                 'storyId' => $story->getId()
             ));
         }
