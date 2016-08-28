@@ -68,9 +68,40 @@ class StoryController extends Controller
 
     /**
      * @Route("/story/create/", name="story_create")
+     */
+    public function createAction(Request $request)
+    {
+        $story = new Story();
+
+        $form = $this->createFormBuilder($story)
+            ->add('title', TextType::class)
+            ->add('body', TextareaType::class)
+            ->add('save', SubmitType::class, array('label' => 'Create'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $story = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($story);
+            $em->flush();
+
+            return $this->redirectToRoute('story_edit', array (
+                'storyId' => $story->getId()
+            ));
+        }
+
+        return $this->render('story/create.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
      * @Route("/story/edit/{storyId}", name="story_edit")
      */
-    public function editAction($storyId = null, Request $request)
+    public function editAction($storyId, Request $request)
     {
         $story = new Story();
 
@@ -90,7 +121,7 @@ class StoryController extends Controller
         $form = $this->createFormBuilder($story)
             ->add('title', TextType::class)
             ->add('body', TextareaType::class)
-            ->add('save', SubmitType::class, array('label' => 'Create Story'))
+            ->add('save', SubmitType::class, array('label' => 'Save'))
             ->getForm();
 
         $form->handleRequest($request);
@@ -109,6 +140,7 @@ class StoryController extends Controller
 
         return $this->render('story/edit.html.twig', array(
             'form' => $form->createView(),
+            'id' => $story->getId(),
         ));
     }
 }

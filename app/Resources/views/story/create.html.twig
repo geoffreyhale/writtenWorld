@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Story #{{ id }} - {{ parent() }}{% endblock %}
+{% block title %}Create Story - {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
     <style>
@@ -12,7 +12,7 @@
 
 {% block body %}
     <div class="col-md-12">
-        <h2 class="page-header">Edit Story #{{ id }}</h2>
+        <h2 class="page-header">Create Story</h2>
         {{ form_start(form) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}
