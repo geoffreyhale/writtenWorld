@@ -2,6 +2,14 @@
 
 {% block title %}Edit Story - {{ parent() }}{% endblock %}
 
+{% block stylesheets %}
+    <style>
+        textarea#form_body {
+            height: 400px;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
     <div class="col-md-12">
         <h2 class="page-header">Edit Story</h2>
