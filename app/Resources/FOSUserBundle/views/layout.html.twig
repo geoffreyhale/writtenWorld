@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="col-md-12">
+        <h2 class="page-header">Register</h2>
+        {% block fos_user_content %}{% endblock %}
+    </div>
+{% endblock %}
