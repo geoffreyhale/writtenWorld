@@ -86,6 +86,13 @@ class StoryController extends Controller
                 'multiple' => true,
                 'required' => false
             ))
+            ->add('stories', EntityType::class, array(
+                'class' => 'AppBundle:Story',
+                'label' => "Related Stories",
+                'choice_label' => 'title',
+                'multiple' => true,
+                'required' => false
+            ))
             ->add('save', SubmitType::class, array('label' => 'Create'))
             ->getForm();
 
@@ -140,6 +147,13 @@ class StoryController extends Controller
             ->add('roles', EntityType::class, array(
                 'class' => 'AppBundle:Role',
                 'choice_label' => 'name',
+                'multiple' => true,
+                'required' => false
+            ))
+            ->add('stories', EntityType::class, array(
+                'class' => 'AppBundle:Story',
+                'label' => "Related Stories",
+                'choice_label' => 'title',
                 'multiple' => true,
                 'required' => false
             ))
