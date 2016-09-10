@@ -1,16 +1,24 @@
-<form action="{{ path('fos_user_registration_register') }}" method="POST">
-    <div class="form-group" id="fos_user_registration_form">
-        {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'Email'|trans } }) }}
-        {{ form_errors(form.email) }}
+<form action="{{ path('fos_user_registration_register') }}" method="POST" style="max-width: 300px;">
+    <div id="fos_user_registration_form">
+        <div class="form-group">
+            {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'Email'|trans } }) }}
+            {{ form_errors(form.email) }}
+        </div>
 
-        {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'Username'|trans } }) }}
-        {{ form_errors(form.username) }}
+        <div class="form-group">
+            {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'Username'|trans } }) }}
+            {{ form_errors(form.username) }}
+        </div>
 
-        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'Password'|trans } }) }}
-        {{ form_errors(form.plainPassword.first) }}
+        <div class="form-group">
+            {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'Password'|trans } }) }}
+            {{ form_errors(form.plainPassword.first) }}
+        </div>
 
-        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'Password'|trans } }) }}
-        {{ form_errors(form.plainPassword.second) }}
+        <div class="form-group">
+            {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'Password'|trans } }) }}
+            {{ form_errors(form.plainPassword.second) }}
+        </div>
 
         {{ form_rest(form) }}
     </div>
