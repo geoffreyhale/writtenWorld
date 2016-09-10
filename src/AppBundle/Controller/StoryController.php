@@ -6,6 +6,7 @@ use AppBundle\Entity\Location;
 use AppBundle\Entity\Role;
 use AppBundle\Entity\Story;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -73,6 +74,18 @@ class StoryController extends Controller
         $form = $this->createFormBuilder($story)
             ->add('title', TextType::class)
             ->add('body', TextareaType::class)
+            ->add('locations', EntityType::class, array(
+                'class' => 'AppBundle:Location',
+                'choice_label' => 'name',
+                'multiple' => true,
+                'required' => false
+            ))
+            ->add('roles', EntityType::class, array(
+                'class' => 'AppBundle:Role',
+                'choice_label' => 'name',
+                'multiple' => true,
+                'required' => false
+            ))
             ->add('save', SubmitType::class, array('label' => 'Create'))
             ->getForm();
 
@@ -118,6 +131,18 @@ class StoryController extends Controller
         $form = $this->createFormBuilder($story)
             ->add('title', TextType::class)
             ->add('body', TextareaType::class)
+            ->add('locations', EntityType::class, array(
+                'class' => 'AppBundle:Location',
+                'choice_label' => 'name',
+                'multiple' => true,
+                'required' => false
+            ))
+            ->add('roles', EntityType::class, array(
+                'class' => 'AppBundle:Role',
+                'choice_label' => 'name',
+                'multiple' => true,
+                'required' => false
+            ))
             ->add('save', SubmitType::class, array('label' => 'Update'))
             ->getForm();
 
