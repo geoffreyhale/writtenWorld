@@ -78,6 +78,7 @@ class RoleController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $role = $form->getData();
+            $role->setCreatedBy($this->getUser());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($role);
@@ -111,6 +112,12 @@ class RoleController extends Controller
                     'No role found for id ' . $roleId
                 );
             }
+        }
+
+        if ($role->getCreatedBy() !== $this->getUser()) {
+            throw $this->createNotFoundException(
+                'You did not create this so you cannot edit it.'
+            );
         }
 
         $form = $this->createFormBuilder($role)

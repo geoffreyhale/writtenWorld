@@ -100,6 +100,7 @@ class StoryController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $story = $form->getData();
+            $story->setCreatedBy($this->getUser());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($story);
@@ -133,6 +134,12 @@ class StoryController extends Controller
                     'No story found for id ' . $storyId
                 );
             }
+        }
+
+        if ($story->getCreatedBy() !== $this->getUser()) {
+            throw $this->createNotFoundException(
+                'You did not create this so you cannot edit it.'
+            );
         }
 
         $form = $this->createFormBuilder($story)

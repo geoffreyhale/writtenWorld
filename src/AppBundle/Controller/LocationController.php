@@ -78,6 +78,7 @@ class LocationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $location = $form->getData();
+            $location->setCreatedBy($this->getUser());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($location);
@@ -111,6 +112,12 @@ class LocationController extends Controller
                     'No location found for id ' . $locationId
                 );
             }
+        }
+
+        if ($location->getCreatedBy() !== $this->getUser()) {
+            throw $this->createNotFoundException(
+                'You did not create this so you cannot edit it.'
+            );
         }
 
         $form = $this->createFormBuilder($location)
