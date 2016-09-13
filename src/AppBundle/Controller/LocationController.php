@@ -35,7 +35,9 @@ class LocationController extends Controller
             'name' => $location->getName(),
             'description' => $location->getDescription(),
             'id' => $location->getId(),
+            'location' => $location,
             'stories' => $location->getStories(),
+            'user' => $this->getUser(),
         ));
     }
 

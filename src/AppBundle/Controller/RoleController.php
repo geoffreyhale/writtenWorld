@@ -35,7 +35,9 @@ class RoleController extends Controller
             'name' => $role->getName(),
             'description' => $role->getDescription(),
             'id' => $role->getId(),
+            'role' => $role,
             'stories' => $role->getStories(),
+            'user' => $this->getUser(),
         ));
     }
 

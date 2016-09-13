@@ -23,9 +23,11 @@
     <div class="col-md-12">
         <h2 class="page-header">
             {{ name }}
+            {% if location.createdBy == user %}
             <span class="small">
                 <a href="{{ path('location_edit', { locationId : id }) }}">edit</a>
             </span>
+            {% endif %}
         </h2>
     </div>
     <div class="col-md-8">

@@ -56,9 +56,11 @@ class StoryController extends Controller
             'title' => $story->getTitle(),
             'body' => $story->getBody(),
             'id' => $story->getId(),
+            'story' => $story,
             'stories' => $story->getStories(),
             'locations' => $story->getLocations(),
-            'roles' => $story->getRoles()
+            'roles' => $story->getRoles(),
+            'user' => $this->getUser(),
         ));
     }
 
