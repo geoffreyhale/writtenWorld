@@ -31,13 +31,11 @@ class RoleController extends Controller
             );
         }
 
-        $stories = $role->getStories();
-
         return $this->render('role/show.html.twig', array(
             'name' => $role->getName(),
             'description' => $role->getDescription(),
             'id' => $role->getId(),
-            'stories' => $stories,
+            'stories' => $role->getStories(),
         ));
     }
 

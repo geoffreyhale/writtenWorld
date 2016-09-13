@@ -31,13 +31,11 @@ class LocationController extends Controller
             );
         }
 
-        $stories = $location->getStories();
-
         return $this->render('location/show.html.twig', array(
             'name' => $location->getName(),
             'description' => $location->getDescription(),
             'id' => $location->getId(),
-            'stories' => $stories,
+            'stories' => $location->getStories(),
         ));
     }
 
