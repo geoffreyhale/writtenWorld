@@ -48,9 +48,9 @@
     </div>
     <div class="col-md-8">
         <div class="story clearfix">
-            {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
-                <img src="{{ asset_url }}" class="img-rounded" />
-            {% endimage %}
+            {#{% image '@AppBundle/Resources/public/images/placeholder.jpg' %}#}
+                {#<img src="{{ asset_url }}" class="img-rounded" />#}
+            {#{% endimage %}#}
             {{ body }}
         </div>
         <div class="stories">
@@ -60,11 +60,12 @@
     </div>
     <div class="col-md-4">
         <div class="locations">
+            <h3 class="text-muted">Location</h3>
             {% for location in locations %}
-                <div class="location">
-                    {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
-                        <img src="{{ asset_url }}" class="img-rounded" />
-                    {% endimage %}
+                <div class="location panel panel-default panel-body">
+                    {#{% image '@AppBundle/Resources/public/images/placeholder.jpg' %}#}
+                        {#<img src="{{ asset_url }}" class="img-rounded" />#}
+                    {#{% endimage %}#}
                     <h3>
                         <a href="{{ path('location_show', {locationId: location.id }) }}" style="color: inherit;">{{ location.name }}</a>
                         {% if location.createdBy == user %}
@@ -80,9 +81,9 @@
         <div class="characters">
             {% for role in roles %}
                 <div class="character">
-                    {% image '@AppBundle/Resources/public/images/placeholder-role.png' %}
-                        <img src="{{ asset_url }}" class="img-rounded" />
-                    {% endimage %}
+                    {#{% image '@AppBundle/Resources/public/images/placeholder-role.png' %}#}
+                        {#<img src="{{ asset_url }}" class="img-rounded" />#}
+                    {#{% endimage %}#}
                     <h4>
                         <a href="{{ path('role_show', {roleId: role.id }) }}" style="color: inherit;">{{ role.name }}</a>
                         {% if role.createdBy == user %}
