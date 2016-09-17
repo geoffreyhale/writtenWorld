@@ -51,7 +51,7 @@
             {#{% image '@AppBundle/Resources/public/images/placeholder.jpg' %}#}
                 {#<img src="{{ asset_url }}" class="img-rounded" />#}
             {#{% endimage %}#}
-            {{ body }}
+            {{ body|nl2br }}
         </div>
         <div class="stories">
             <h3>Related Stories</h3>
@@ -74,7 +74,7 @@
                         </span>
                         {% endif %}
                     </h3>
-                    {{ location.description }}
+                    {{ location.description|nl2br }}
                 </div>
             {% endfor %}
         </div>
@@ -92,7 +92,7 @@
                         </span>
                         {% endif %}
                     </h4>
-                    {{ role.description }}
+                    {{ role.description|nl2br }}
                 </div>
             {% endfor %}
         </div>

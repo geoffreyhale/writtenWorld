@@ -35,7 +35,7 @@
             {#{% image '@AppBundle/Resources/public/images/placeholder.jpg' %}#}
                 {#<img src="{{ asset_url }}" class="img-rounded" />#}
             {#{% endimage %}#}
-            {{ description }}
+            {{ description|nl2br }}
         </div>
         <div class="stories">
             <h3>Related Stories</h3>
