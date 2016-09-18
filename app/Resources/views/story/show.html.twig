@@ -72,41 +72,49 @@
     <div class="col-md-4">
         <div class="locations">
             <h2>Location</h2>
-            {% for location in locations %}
-                <div class="location panel panel-default panel-body">
-                    <h3 class="name">
-                        <a href="{{ path('location_show', {locationId: location.id }) }}" style="color: inherit;">{{ location.name }}</a>
-                        {% if location.createdBy == user %}
-                            <span class="small">
-                            <a href="{{ path('location_edit', {locationId: location.id }) }}">edit</a>
-                        </span>
-                        {% endif %}
-                    </h3>
-                    {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
-                        <img src="{{ asset_url }}" class="img-rounded" />
-                    {% endimage %}
-                    {{ location.description|nl2br }}
-                </div>
-            {% endfor %}
+            {% if locations is empty %}
+            <span class="text-muted">None</span>
+            {% else %}
+                {% for location in locations %}
+                    <div class="location panel panel-default panel-body">
+                        <h3 class="name">
+                            <a href="{{ path('location_show', {locationId: location.id }) }}" style="color: inherit;">{{ location.name }}</a>
+                            {% if location.createdBy == user %}
+                                <span class="small">
+                                <a href="{{ path('location_edit', {locationId: location.id }) }}">edit</a>
+                            </span>
+                            {% endif %}
+                        </h3>
+                        {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
+                            <img src="{{ asset_url }}" class="img-rounded" />
+                        {% endimage %}
+                        {{ location.description|nl2br }}
+                    </div>
+                {% endfor %}
+            {% endif %}
         </div>
         <div class="characters">
             <h2>Characters</h2>
-            {% for role in roles %}
-                <div class="character panel panel-default panel-body">
-                    <h3 class="name">
-                        <a href="{{ path('role_show', {roleId: role.id }) }}" style="color: inherit;">{{ role.name }}</a>
-                        {% if role.createdBy == user %}
-                        <span class="small">
-                            <a href="{{ path('role_edit', {roleId: role.id }) }}">edit</a>
-                        </span>
-                        {% endif %}
-                    </h3>
-                    {% image '@AppBundle/Resources/public/images/placeholder-role.png' %}
-                    <img src="{{ asset_url }}" class="img-rounded" />
-                    {% endimage %}
-                    {{ role.description|nl2br }}
-                </div>
-            {% endfor %}
+            {% if roles is empty %}
+            <span class="text-muted">None</span>
+            {% else %}
+                {% for role in roles %}
+                    <div class="character panel panel-default panel-body">
+                        <h3 class="name">
+                            <a href="{{ path('role_show', {roleId: role.id }) }}" style="color: inherit;">{{ role.name }}</a>
+                            {% if role.createdBy == user %}
+                            <span class="small">
+                                <a href="{{ path('role_edit', {roleId: role.id }) }}">edit</a>
+                            </span>
+                            {% endif %}
+                        </h3>
+                        {% image '@AppBundle/Resources/public/images/placeholder-role.png' %}
+                        <img src="{{ asset_url }}" class="img-rounded" />
+                        {% endimage %}
+                        {{ role.description|nl2br }}
+                    </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}
