@@ -4,13 +4,20 @@
 
 {% block stylesheets %}
     <style>
-        img {
-            margin: 0 10px 5px 0;
+        h1.page-header {
+            margin-bottom: 0;
         }
-        .story img {
+        h2 {
+            color: lightgrey;
+        }
+        .main {
+            font-size: 150%;
+        }
+        .main img {
             float: left;
-            width: 300px;
+            width: 250px;
             height: 250px;
+            margin: 5px 15px 5px 0;
         }
         .stories {
             clear: both;
@@ -20,78 +27,83 @@
             clear: both;
             margin: 0 0 20px;
         }
-        .location img {
-            width: 100%;
+        .location h3.name,
+        .character h3.name {
+            margin-top: 0;
+        }
+        .location img,
+        .character img {
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin: 5px 15px 5px 0;
         }
         .character {
             clear: both;
-            margin: 20px 0;
-        }
-        .character img {
-            float: left;
-            width: 120px;
-            height: 150px;
+            margin: 0 0 20px;
         }
     </style>
 {% endblock %}
 
 {% block body %}
     <div class="col-md-12">
-        <h2 class="page-header">
+        <h1 class="page-header">
             {{ title }}
             {% if story.createdBy == user %}
-            <span class="small">
+                <span class="small">
                 <a href="{{ path('story_edit', { storyId : id }) }}">edit</a>
             </span>
             {% endif %}
-        </h2>
+        </h1>
     </div>
     <div class="col-md-8">
-        <div class="story clearfix">
-            {#{% image '@AppBundle/Resources/public/images/placeholder.jpg' %}#}
-                {#<img src="{{ asset_url }}" class="img-rounded" />#}
-            {#{% endimage %}#}
+        <div class="main story clearfix">
+            <h2>Story</h2>
+            {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
+                <img src="{{ asset_url }}" class="img-rounded" />
+            {% endimage %}
             {{ body|nl2br }}
         </div>
         <div class="stories">
-            <h3>Related Stories</h3>
+            <h2>Related Stories</h2>
             {{ include('story/partials/list.html.twig') }}
         </div>
     </div>
     <div class="col-md-4">
         <div class="locations">
-            <h3 class="text-muted">Location</h3>
+            <h2>Location</h2>
             {% for location in locations %}
                 <div class="location panel panel-default panel-body">
-                    {#{% image '@AppBundle/Resources/public/images/placeholder.jpg' %}#}
-                        {#<img src="{{ asset_url }}" class="img-rounded" />#}
-                    {#{% endimage %}#}
-                    <h3>
+                    <h3 class="name">
                         <a href="{{ path('location_show', {locationId: location.id }) }}" style="color: inherit;">{{ location.name }}</a>
                         {% if location.createdBy == user %}
-                        <span class="small">
+                            <span class="small">
                             <a href="{{ path('location_edit', {locationId: location.id }) }}">edit</a>
                         </span>
                         {% endif %}
                     </h3>
+                    {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
+                        <img src="{{ asset_url }}" class="img-rounded" />
+                    {% endimage %}
                     {{ location.description|nl2br }}
                 </div>
             {% endfor %}
         </div>
         <div class="characters">
+            <h2>Characters</h2>
             {% for role in roles %}
-                <div class="character">
-                    {#{% image '@AppBundle/Resources/public/images/placeholder-role.png' %}#}
-                        {#<img src="{{ asset_url }}" class="img-rounded" />#}
-                    {#{% endimage %}#}
-                    <h4>
+                <div class="character panel panel-default panel-body">
+                    <h3 class="name">
                         <a href="{{ path('role_show', {roleId: role.id }) }}" style="color: inherit;">{{ role.name }}</a>
                         {% if role.createdBy == user %}
                         <span class="small">
                             <a href="{{ path('role_edit', {roleId: role.id }) }}">edit</a>
                         </span>
                         {% endif %}
-                    </h4>
+                    </h3>
+                    {% image '@AppBundle/Resources/public/images/placeholder-role.png' %}
+                    <img src="{{ asset_url }}" class="img-rounded" />
+                    {% endimage %}
                     {{ role.description|nl2br }}
                 </div>
             {% endfor %}

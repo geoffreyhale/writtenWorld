@@ -4,13 +4,17 @@
 
 {% block stylesheets %}
     <style>
-        img {
-            margin: 0 10px 5px 0;
+        h2 {
+            color: lightgrey;
+        }
+        .main {
+            font-size: 150%;
         }
         .main img {
             float: left;
-            width: 300px;
+            width: 250px;
             height: 250px;
+            margin: 5px 15px 5px 0;
         }
         .stories {
             clear: both;
@@ -21,24 +25,24 @@
 
 {% block body %}
     <div class="col-md-12">
-        <h2 class="page-header">
+        <h1 class="page-header">
             {{ name }}
             {% if location.createdBy == user %}
             <span class="small">
                 <a href="{{ path('location_edit', { locationId : id }) }}">edit</a>
             </span>
             {% endif %}
-        </h2>
+        </h1>
     </div>
     <div class="col-md-8">
         <div class="main clearfix">
-            {#{% image '@AppBundle/Resources/public/images/placeholder.jpg' %}#}
-                {#<img src="{{ asset_url }}" class="img-rounded" />#}
-            {#{% endimage %}#}
+            {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
+                <img src="{{ asset_url }}" class="img-rounded" />
+            {% endimage %}
             {{ description|nl2br }}
         </div>
         <div class="stories">
-            <h3>Related Stories</h3>
+            <h2>Related Stories</h2>
             {{ include('story/partials/list.html.twig') }}
         </div>
     </div>
