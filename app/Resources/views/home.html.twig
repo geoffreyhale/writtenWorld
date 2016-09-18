@@ -2,32 +2,43 @@
 
 {% block title %}Home - {{ parent() }}{% endblock %}
 
+{% block stylesheets %}
+    <style>
+        h2 {
+            color: lightgrey;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
     <div class="col-md-4">
         <h2 class="page-header">
-            <a href="{{ path('story_list') }}" style="color: inherit;">Stories</a>
+            Stories
             <span class="small">
                 <a href="{{ path('story_create') }}">Create</a>
             </span>
         </h2>
         {{ include('story/partials/list.html.twig') }}
+        <a href="{{ path('story_list') }}" style="margin-left: 15px;">More...</a>
     </div>
     <div class="col-md-4">
         <h2 class="page-header">
-            <a href="{{ path('location_list') }}" style="color: inherit;">Locations</a>
+            Locations
             <span class="small">
                 <a href="{{ path('location_create') }}">Create</a>
             </span>
         </h2>
         {{ include('location/partials/list.html.twig') }}
+        <a href="{{ path('location_list') }}" style="margin-left: 15px;">More...</a>
     </div>
     <div class="col-md-4">
         <h2 class="page-header">
-            <a href="{{ path('role_list') }}" style="color: inherit;">Characters</a>
+            Characters
             <span class="small">
                 <a href="{{ path('role_create') }}">Create</a>
             </span>
         </h2>
         {{ include('role/partials/list.html.twig') }}
+        <a href="{{ path('role_list') }}" style="margin-left: 15px;">More...</a>
     </div>
 {% endblock %}
