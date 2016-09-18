@@ -5,7 +5,7 @@
 {% block body %}
     <div class="col-md-4">
         <h2 class="page-header">
-            Stories
+            <a href="{{ path('story_list') }}" style="color: inherit;">Stories</a>
             <span class="small">
                 <a href="{{ path('story_create') }}">Create</a>
             </span>
@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-4">
         <h2 class="page-header">
-            Locations
+            <a href="{{ path('location_list') }}" style="color: inherit;">Locations</a>
             <span class="small">
                 <a href="{{ path('location_create') }}">Create</a>
             </span>
@@ -23,7 +23,7 @@
     </div>
     <div class="col-md-4">
         <h2 class="page-header">
-            Characters
+            <a href="{{ path('role_list') }}" style="color: inherit;">Characters</a>
             <span class="small">
                 <a href="{{ path('role_create') }}">Create</a>
             </span>
