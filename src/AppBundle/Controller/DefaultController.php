@@ -15,15 +15,27 @@ class DefaultController extends Controller
     {
         $stories = $this->getDoctrine()
             ->getRepository('AppBundle:Story')
-            ->findAll();
+            ->findBy(
+                array(),
+                array('id' => 'DESC'),
+                10
+            );
 
         $locations = $this->getDoctrine()
             ->getRepository('AppBundle:Location')
-            ->findAll();
+            ->findBy(
+                array(),
+                array('id' => 'DESC'),
+                10
+            );
 
         $roles = $this->getDoctrine()
             ->getRepository('AppBundle:Role')
-            ->findAll();
+            ->findBy(
+                array(),
+                array('id' => 'DESC'),
+                10
+            );
 
         return $this->render('home.html.twig', array(
             'stories' => $stories,
