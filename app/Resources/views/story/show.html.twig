@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Story #{{ id }} - {{ parent() }}{% endblock %}
+{% block title %}Story #{{ story.id }} - {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
     <style>
@@ -48,10 +48,10 @@
 {% block body %}
     <div class="col-md-12">
         <h1 class="page-header">
-            {{ title }}
+            {{ story.title }}
             {% if story.createdBy == user %}
                 <span class="small">
-                <a href="{{ path('story_edit', { storyId : id }) }}">edit</a>
+                <a href="{{ path('story_edit', { storyId : story.id }) }}">edit</a>
             </span>
             {% endif %}
         </h1>
@@ -62,20 +62,21 @@
             {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
                 <img src="{{ asset_url }}" class="img-rounded" />
             {% endimage %}
-            {{ body|nl2br }}
+            {{ story.body|nl2br }}
         </div>
         <div class="stories">
             <h2>Related Stories</h2>
+            {% set stories = story.stories %}
             {{ include('story/partials/list.html.twig') }}
         </div>
     </div>
     <div class="col-md-4">
         <div class="locations">
             <h2>Location</h2>
-            {% if locations is empty %}
+            {% if story.locations is empty %}
             <span class="text-muted">None</span>
             {% else %}
-                {% for location in locations %}
+                {% for location in story.locations %}
                     <div class="location panel panel-default panel-body">
                         <h3 class="name">
                             <a href="{{ path('location_show', {locationId: location.id }) }}" style="color: inherit;">{{ location.name }}</a>
@@ -95,10 +96,10 @@
         </div>
         <div class="characters">
             <h2>Characters</h2>
-            {% if roles is empty %}
+            {% if story.roles is empty %}
             <span class="text-muted">None</span>
             {% else %}
-                {% for role in roles %}
+                {% for role in story.roles %}
                     <div class="character panel panel-default panel-body">
                         <h3 class="name">
                             <a href="{{ path('role_show', {roleId: role.id }) }}" style="color: inherit;">{{ role.name }}</a>

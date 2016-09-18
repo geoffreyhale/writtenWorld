@@ -32,11 +32,7 @@ class LocationController extends Controller
         }
 
         return $this->render('location/show.html.twig', array(
-            'name' => $location->getName(),
-            'description' => $location->getDescription(),
-            'id' => $location->getId(),
             'location' => $location,
-            'stories' => $location->getStories(),
             'user' => $this->getUser(),
         ));
     }

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Role #{{ id }} - {{ parent() }}{% endblock %}
+{% block title %}Role #{{ role.id }} - {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
     <style>
@@ -26,10 +26,10 @@
 {% block body %}
     <div class="col-md-12">
         <h1 class="page-header">
-            {{ name }}
+            {{ role.name }}
             {% if role.createdBy == user %}
             <span class="small">
-                <a href="{{ path('role_edit', { roleId : id }) }}">edit</a>
+                <a href="{{ path('role_edit', { roleId : role.id }) }}">edit</a>
             </span>
             {% endif %}
         </h1>
@@ -39,10 +39,11 @@
             {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
                 <img src="{{ asset_url }}" class="img-rounded" />
             {% endimage %}
-            {{ description|nl2br }}
+            {{ role.description|nl2br }}
         </div>
         <div class="stories">
             <h2>Related Stories</h2>
+            {% set stories = role.stories %}
             {{ include('story/partials/list.html.twig') }}
         </div>
     </div>

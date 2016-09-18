@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Location #{{ id }} - {{ parent() }}{% endblock %}
+{% block title %}Location #{{ location.id }} - {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
     <style>
@@ -26,10 +26,10 @@
 {% block body %}
     <div class="col-md-12">
         <h1 class="page-header">
-            {{ name }}
+            {{ location.name }}
             {% if location.createdBy == user %}
             <span class="small">
-                <a href="{{ path('location_edit', { locationId : id }) }}">edit</a>
+                <a href="{{ path('location_edit', { locationId : location.id }) }}">edit</a>
             </span>
             {% endif %}
         </h1>
@@ -39,10 +39,11 @@
             {% image '@AppBundle/Resources/public/images/placeholder.jpg' %}
                 <img src="{{ asset_url }}" class="img-rounded" />
             {% endimage %}
-            {{ description|nl2br }}
+            {{ location.description|nl2br }}
         </div>
         <div class="stories">
             <h2>Related Stories</h2>
+            {% set stories = location.stories %}
             {{ include('story/partials/list.html.twig') }}
         </div>
     </div>

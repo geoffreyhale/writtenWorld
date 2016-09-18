@@ -53,13 +53,7 @@ class StoryController extends Controller
         }
 
         return $this->render('story/show.html.twig', array(
-            'title' => $story->getTitle(),
-            'body' => $story->getBody(),
-            'id' => $story->getId(),
             'story' => $story,
-            'stories' => $story->getStories(),
-            'locations' => $story->getLocations(),
-            'roles' => $story->getRoles(),
             'user' => $this->getUser(),
         ));
     }
