@@ -3,7 +3,10 @@
         No results.
     {% else %}
         {% for role in roles %}
-            <li class="list-group-item"><a href="{{ path('role_show', { roleId : role.id }) }}">{{ role.name }}</a></li>
+            <li class="list-group-item">
+                <a href="{{ path('role_show', { roleId : role.id }) }}">{{ role.name }}</a>
+                <span style="color: lightgrey;">{{ role.createdBy }}</span>
+            </li>
         {% endfor %}
     {% endif %}
 </ul>

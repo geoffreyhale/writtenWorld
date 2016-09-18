@@ -3,7 +3,10 @@
         No results.
     {% else %}
         {% for location in locations %}
-            <li class="list-group-item"><a href="{{ path('location_show', { locationId : location.id }) }}">{{ location.name }}</a></li>
+            <li class="list-group-item">
+                <a href="{{ path('location_show', { locationId : location.id }) }}">{{ location.name }}</a>
+                <span style="color: lightgrey;">{{ location.createdBy }}</span>
+            </li>
         {% endfor %}
     {% endif %}
 </ul>
